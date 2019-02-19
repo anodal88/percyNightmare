@@ -1,0 +1,226 @@
+const should = require('chai').should()
+const Nightmare = require('nightmare')
+const { percySnapshot } = require('@percy/nightmare')
+
+const TEST_URL = "https://qa3-web.ncl.com"
+const pages = [
+  '/about',
+  '/about/security-information',
+  '/about/environmental-commitment',
+  '/about/careers/overview',
+  '/media-center',
+  '/partners',
+  '/international-offices',
+  '/agent-locator',
+]
+
+
+describe('Visit Home Page', function () {
+  this.timeout('40s')
+
+  let nightmare = null
+  beforeEach(function () {
+    // Create a new Nightmare instance for each test.
+    nightmare = new Nightmare()
+  })
+
+  afterEach(function (done) {
+    // end the Nightmare instance
+    nightmare.end(done)
+  })
+
+
+  it('Loads the app', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL)
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+
+  it('Visit about page', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL+pages[0])
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+
+  it('security-information', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL+pages[1])
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+
+  it('environmental-commitment', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL+pages[2])
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+  it('careers/overview', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL+pages[3])
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+  it('media-center', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL+pages[4])
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+  it('partners', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL+pages[5])
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+  it('international-offices', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL+pages[6])
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+  it('agent-locator', function (done) {
+    nightmare
+      // Load the app.
+      .goto(TEST_URL+pages[7])
+      // Take a snapshot and upload to Percy
+      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
+      // Verify that our main app container exists.
+      .exists('a[title*="Why norwegian"]')
+      .then(function (exists) {
+        exists.should.be.true
+        done()
+      })
+      .catch(done)
+  })
+  // it('With no todos, hides main section and footer', function (done) {
+  //   nightmare
+  //     .goto(TEST_URL)
+  //     .visible('.main')
+  //     .then(function (mainVisible) {
+  //       mainVisible.should.be.false
+  //       return nightmare.visible('.footer')
+  //     })
+  //     .then(function (footerVisible) {
+  //       footerVisible.should.be.false
+  //       done()
+  //     })
+  //     .catch(done)
+  // })
+
+  // it('Accepts a new todo', function (done) {
+  //   nightmare
+  //     .goto(TEST_URL)
+  //     .evaluate(function () {
+  //       return document.querySelectorAll('.todo-list li').length
+  //     })
+  //     .then(function (todoListLength) {
+  //       // We start with an empty to-do list.
+  //       todoListLength.should.eq(0)
+
+  //       // Add a new to-do item.
+  //       return nightmare.type('.new-todo', 'New fancy todo')
+  //         .wait('.todo-list li')
+  //         .use(percySnapshot('Accepts a new todo'))
+  //         .evaluate(function () {
+  //           return document.querySelectorAll('.todo-list li').length
+  //         })
+  //     })
+  //     .then(function (todoListLength) {
+  //       // Our to-do list should contain 1 element.
+  //       todoListLength.should.eq(1)
+  //       done()
+  //     })
+  //     .catch(done)
+  // })
+
+  // it('Lets you check off a todo', function (done) {
+  //   nightmare
+  //     .goto(TEST_URL)
+  //     .type('.new-todo', 'A thing to accomplish')
+  //     .evaluate(function () {
+  //       return document.querySelector('.todo-count').textContent
+  //     })
+  //     .then(function (itemCountText) {
+  //       itemCountText.should.eq('1 item left')
+
+  //       return nightmare
+  //         .click('input.toggle')
+  //         .use(percySnapshot('Checked-off todo', {widths: [300, 600, 1000]}))
+  //         .evaluate(function () {
+  //           return document.querySelector('.todo-count').textContent
+  //         })
+  //     })
+  //     .then(function (itemCountText) {
+  //       itemCountText.should.eq('0 items left')
+  //       done()
+  //     })
+  //     .catch(done)
+  // })
+})
