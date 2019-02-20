@@ -1,27 +1,17 @@
-const should = require('chai').should()
+const { environment } = require('../environment')
 const Nightmare = require('nightmare')
 const { percySnapshot } = require('@percy/nightmare')
 
-const TEST_URL = "https://qa3-web.ncl.com"
-const pages = [
-  '/about',
-  '/about/security-information',
-  '/about/environmental-commitment',
-  '/about/careers/overview',
-  '/media-center',
-  '/partners',
-  '/international-offices',
-  '/agent-locator',
-]
 
 
-describe('Visit Home Page', function () {
-  this.timeout('40s')
+describe('Our Company', function () {
+  this.timeout('60s')
 
   let nightmare = null
   beforeEach(function () {
     // Create a new Nightmare instance for each test.
-    nightmare = new Nightmare()
+     nightmare = new Nightmare()
+    nightmare.goto(environment.baseUrl)
   })
 
   afterEach(function (done) {
@@ -29,136 +19,78 @@ describe('Visit Home Page', function () {
     nightmare.end(done)
   })
 
+  it('About', function (done) {
+    nightmare
+        .click('footer a[href="/about"]')
+        .use(percySnapshot('about', { widths: environment.widths }))
+        .then(function () {
+            done()
+        })
+        .catch(done)
+})
 
-  it('Loads the app', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL)
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
-      })
-      .catch(done)
-  })
 
-  it('Visit about page', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL+pages[0])
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
+it('Security-information', function (done) {
+  nightmare
+      .click('footer a[href="/about/security-information"]')
+      .use(percySnapshot('security-information', { widths: environment.widths }))
+      .then(function () {
+          done()
       })
       .catch(done)
-  })
+})
 
-  it('security-information', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL+pages[1])
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
+it('Environmental-commitment', function (done) {
+  nightmare
+      .click('footer a[href="/about/environmental-commitment"]')
+      .use(percySnapshot('environmental-commitment', { widths: environment.widths }))
+      .then(function () {
+          done()
       })
       .catch(done)
-  })
+})
 
-  it('environmental-commitment', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL+pages[2])
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
+it('Media-center', function (done) {
+  nightmare
+      .click('footer a[href="/media-center"]')
+      .use(percySnapshot('media-center', { widths: environment.widths }))
+      .then(function () {
+          done()
       })
       .catch(done)
-  })
-  it('careers/overview', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL+pages[3])
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
+})
+
+it('Partners', function (done) {
+  nightmare
+      .click('footer a[href="/partners"]')
+      .use(percySnapshot('partners', { widths: environment.widths }))
+      .then(function () {
+          done()
       })
       .catch(done)
-  })
-  it('media-center', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL+pages[4])
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
+})
+
+it('International-offices', function (done) {
+  nightmare
+      .click('footer a[href="/international-offices"]')
+      .use(percySnapshot('international-offices', { widths: environment.widths }))
+      .then(function () {
+          done()
       })
       .catch(done)
-  })
-  it('partners', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL+pages[5])
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
+})
+
+
+it('Agent-locator', function (done) {
+  nightmare
+      .click('footer a[href="/agent-locator"]')
+      .use(percySnapshot('agent-locator', { widths: environment.widths }))
+      .then(function () {
+          done()
       })
       .catch(done)
-  })
-  it('international-offices', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL+pages[6])
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
-      })
-      .catch(done)
-  })
-  it('agent-locator', function (done) {
-    nightmare
-      // Load the app.
-      .goto(TEST_URL+pages[7])
-      // Take a snapshot and upload to Percy
-      .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-      // Verify that our main app container exists.
-      .exists('a[title*="Why norwegian"]')
-      .then(function (exists) {
-        exists.should.be.true
-        done()
-      })
-      .catch(done)
-  })
+})
+ 
   // it('With no todos, hides main section and footer', function (done) {
   //   nightmare
   //     .goto(TEST_URL)

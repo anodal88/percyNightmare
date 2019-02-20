@@ -4,20 +4,14 @@ const { percySnapshot } = require('@percy/nightmare')
 const { environment } = require('../environment')
 
 
-const TEST_URL = environment.baseUrl
-const pages = [
-    '/about/accessible-cruising',
-    '/downloads/overview',
-]
-
-
-describe('Special Themed Pages', function () {
-    this.timeout('40s')
+describe('Cruising Essentials', function () {
+    this.timeout('60s')
 
     let nightmare = null
     beforeEach(function () {
         // Create a new Nightmare instance for each test.
-        nightmare = new Nightmare()
+         nightmare = new Nightmare()
+        nightmare.goto(environment.baseUrl)
     })
 
     afterEach(function (done) {
@@ -26,45 +20,26 @@ describe('Special Themed Pages', function () {
     })
 
 
-    it('Go to Home Page', function (done) {
+    it('Accessible-cruising', function (done) {
         nightmare
-            // Load the app.
-            .goto(TEST_URL)
-            // Verify that our main app container exists.
-            .exists('a[title*="Why norwegian"]')
-            .then(function (exists) {
-                exists.should.be.true
+
+            .click('footer a[href*="/accessible-cruising"]')
+            .use(percySnapshot('accessible-cruising', { widths: environment.widths }))
+            .then(function () {
                 done()
             })
             .catch(done)
     })
+  
 
-    it(pages[0], function (done) {
+    it('Downloads-overview', function (done) {
         nightmare
-            // Load the app.
-            .goto(TEST_URL+pages[0])
-            .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-            // Verify that our main app container exists.
-            .exists('a[title*="Why norwegian"]')
-            .then(function (exists) {
-                exists.should.be.true
+
+            .click('footer a[href*="/downloads/overview"]')
+            .use(percySnapshot('downloads-overview', { widths: environment.widths }))
+            .then(function () {
                 done()
             })
             .catch(done)
     })
-
-    it(pages[1], function (done) {
-        nightmare
-            // Load the app.
-            .goto(TEST_URL+pages[1])
-            .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-            // Verify that our main app container exists.
-            .exists('a[title*="Why norwegian"]')
-            .then(function (exists) {
-                exists.should.be.true
-                done()
-            })
-            .catch(done)
-    })
-
 })

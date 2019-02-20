@@ -9,12 +9,12 @@ const TEST_URL = environment.baseUrl
 
 
 describe('Header / Help', function () {
-    this.timeout('40s')
+    this.timeout('60s')
 
     let nightmare = null
     beforeEach(function () {
         // Create a new Nightmare instance for each test.
-        nightmare = new Nightmare()
+         nightmare = new Nightmare()
     })
 
     afterEach(function (done) {

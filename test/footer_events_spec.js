@@ -6,19 +6,15 @@ const { percySnapshot } = require('@percy/nightmare')
 const { environment } = require('../environment')
 
 
-const TEST_URL = environment.baseUrl
-
-
-
-
 
 describe('Footer Events', function () {
-    this.timeout('40s')
+    this.timeout('60s')
 
     let nightmare = null
     beforeEach(function () {
         // Create a new Nightmare instance for each test.
-        nightmare = new Nightmare()
+         nightmare = new Nightmare()
+        nightmare.goto(environment.baseUrl)
     })
 
     afterEach(function (done) {
@@ -26,42 +22,14 @@ describe('Footer Events', function () {
         nightmare.end(done)
     })
 
-
-    it('Go to Home Page and printing size', function (done) {
+    it('Footer-events', function (done) {
         nightmare
-            // Load the app.
-            .goto(TEST_URL)
-            .login()
-            .use(percySnapshot("XXXXXXXXXXX", { widths: [300, 600, 1280] }))
+
+            .click('footer a[href*="events"]')
+            .use(percySnapshot('footer-events', { widths: environment.widths }))
+            .then(function () {
+                done()
+            })
             .catch(done)
     })
-
-    // it('Go to Home Page', function (done) {
-    //     nightmare
-    //         // Load the app.
-    //         .goto(TEST_URL)
-    //         // Verify that our main app container exists.
-    //         .exists('a[title*="Why norwegian"]')
-    //         .then(function (exists) {
-    //             exists.should.be.true
-    //             done()
-    //         })
-    //         .catch(done)
-    // })
-
-    // it("/events", function (done) {
-    //     nightmare
-    //         // Load the app.
-    //         .goto(TEST_URL+"/events")
-    //         .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-    //         // Verify that our main app container exists.
-    //         .exists('a[title*="Why norwegian"]')
-    //         .then(function (exists) {
-    //             exists.should.be.true
-    //             done()
-    //         })
-    //         .catch(done)
-    // })
-
-
 })
