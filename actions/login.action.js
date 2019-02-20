@@ -9,7 +9,9 @@ Nightmare.action('login', function (done) {
         .send(environment.creadentials)
         .end(function (err, res) {
             console.log("STATUS:",res.status)
+            this.goto('google.com')
             expect(res.status).to.equal("200");
-        });
-    done()
+        })
+        done()
+  
 });

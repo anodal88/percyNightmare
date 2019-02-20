@@ -4,14 +4,6 @@ const { percySnapshot } = require('@percy/nightmare')
 const { environment } = require('../environment')
 
 
-const TEST_URL = environment.baseUrl
-const pages = [
-    '/cruise-deals',
-    '/cruise-deals/choice',
-    '/cruise-deals/sail-away-rates',
-    '/latitudes-rewards-program/insider-offer'
-]
-
 
 describe('Cruise Deals', function () {
     this.timeout('60s')
@@ -28,25 +20,25 @@ describe('Cruise Deals', function () {
         nightmare.end(done)
     })
 
-    it('Cruise-deals', function (done) {
-        nightmare
-            .click('nav a[href="/cruise-deals"]')
-            .use(percySnapshot('cruise-deals', { widths: environment.widths }))
-            .then(function () {
-                done()
-            })
-            .catch(done)
-    })
+    // it('Cruise-deals', function (done) {
+    //     nightmare
+    //         .click('nav a[href="/cruise-deals"]')
+    //         .use(percySnapshot('cruise-deals', { widths: environment.widths }))
+    //         .then(function () {
+    //             done()
+    //         })
+    //         .catch(done)
+    // })
 
-    it('Cruise-deals-choice', function (done) {
-        nightmare
-            .click('a[href*="/choice"]')
-            .use(percySnapshot('cruise-deals-choice', { widths: environment.widths }))
-            .then(function () {
-                done()
-            })
-            .catch(done)
-    })
+    // it('Cruise-deals-choice', function (done) {
+    //     nightmare
+    //         .click('a[href*="/choice"]')
+    //         .use(percySnapshot('cruise-deals-choice', { widths: environment.widths }))
+    //         .then(function () {
+    //             done()
+    //         })
+    //         .catch(done)
+    // })
 
     it('Sail-away-rates', function (done) {
         nightmare
