@@ -1,18 +1,15 @@
 const Nightmare = require('nightmare')
+var chai = require('chai'), chaiHttp = require('chai-http');
+chai.use(chaiHttp);
 const { environment } = require('../environment')
-
+var app = environment.baseUrl
 Nightmare.action('login', function (done) {
-    this.evaluate_now(function () {
-       return $.ajax({
-            url: 'https://qa3-web.ncl.com/booking-quote/authUser',
-            contentType: 'application/json',
-            type: 'POST',
-            data: JSON.stringify({ username: "bgesun", password: "ncl2011" }),
-            async: false
-        })
-    }, done)
-  
-})
-
-
-
+    chai.request(app)
+        .post(environment.authPath)
+        .send(environment.creadentials)
+        .end(function (err, res) {
+            console.log("STATUS:",res.status)
+            expect(res.status).to.equal("200");
+        });
+    done()
+});

@@ -13,13 +13,14 @@ const pages = [
 ]
 
 
-describe('Special Themed Pages', function () {
-    this.timeout('40s')
+describe('Cruise Deals', function () {
+    this.timeout('60s')
 
     let nightmare = null
     beforeEach(function () {
         // Create a new Nightmare instance for each test.
-        nightmare = new Nightmare()
+         nightmare = new Nightmare()
+        nightmare.goto(environment.baseUrl)
     })
 
     afterEach(function (done) {
@@ -27,74 +28,44 @@ describe('Special Themed Pages', function () {
         nightmare.end(done)
     })
 
-
-    it('Go to Home Page', function (done) {
+    it('Cruise-deals', function (done) {
         nightmare
-            // Load the app.
-            .goto(TEST_URL)
-            // Verify that our main app container exists.
-            .exists('a[title*="Why norwegian"]')
-            .then(function (exists) {
-                exists.should.be.true
+            .click('nav a[href="/cruise-deals"]')
+            .use(percySnapshot('cruise-deals', { widths: environment.widths }))
+            .then(function () {
                 done()
             })
             .catch(done)
     })
 
-    it(pages[0], function (done) {
+    it('Cruise-deals-choice', function (done) {
         nightmare
-            // Load the app.
-            .goto(TEST_URL+pages[0])
-            .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-            // Verify that our main app container exists.
-            .exists('a[title*="Why norwegian"]')
-            .then(function (exists) {
-                exists.should.be.true
+            .click('a[href*="/choice"]')
+            .use(percySnapshot('cruise-deals-choice', { widths: environment.widths }))
+            .then(function () {
                 done()
             })
             .catch(done)
     })
 
-    it(pages[1], function (done) {
+    it('Sail-away-rates', function (done) {
         nightmare
-            // Load the app.
-            .goto(TEST_URL+pages[1])
-            .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-            // Verify that our main app container exists.
-            .exists('a[title*="Why norwegian"]')
-            .then(function (exists) {
-                exists.should.be.true
+
+            .click('nav a[href*="/sail-away-rates"]')
+            .use(percySnapshot('sail-away-rates', { widths: environment.widths }))
+            .then(function () {
                 done()
             })
             .catch(done)
     })
 
-    it(pages[2], function (done) {
+    it('Latitudes-rewards-program', function (done) {
         nightmare
-            // Load the app.
-            .goto(TEST_URL+pages[1])
-            .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-            // Verify that our main app container exists.
-            .exists('a[title*="Why norwegian"]')
-            .then(function (exists) {
-                exists.should.be.true
+            .click('nav a[href*="/insider-offer"]')
+            .use(percySnapshot('atitudes-rewards-program-inside-offer', { widths: environment.widths }))
+            .then(function () {
                 done()
             })
             .catch(done)
     })
-
-    it(pages[3], function (done) {
-        nightmare
-            // Load the app.
-            .goto(TEST_URL+pages[1])
-            .use(percySnapshot(this.test.fullTitle(), { widths: [300, 600, 1280] }))
-            // Verify that our main app container exists.
-            .exists('a[title*="Why norwegian"]')
-            .then(function (exists) {
-                exists.should.be.true
-                done()
-            })
-            .catch(done)
-    })
-
 })

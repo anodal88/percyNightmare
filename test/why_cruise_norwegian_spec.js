@@ -5,12 +5,12 @@ const { environment } = require('../environment')
 
 
 describe('Header / Why Cruise Norwegian', function () {
-    this.timeout('40s')
+    this.timeout('60s')
 
     let nightmare = null
     beforeEach(function () {
         // Create a new Nightmare instance for each test.
-        nightmare = new Nightmare()
+         nightmare = new Nightmare()
         nightmare.goto(environment.baseUrl)
     })
 
