@@ -14,3 +14,4 @@ This is a proof of concept of how to integrate Percy and Nightmare Js
 10. to see how it works open one the html files inside of the folder pages and make a ui change
 11. And excecute `npm run test` to excute all the tests
 12. Go to your percy account and you should see a build with the screenshot taken
+13. To change the target of your tests go and edit `environment.js` file and edit the baseUrl attribute
