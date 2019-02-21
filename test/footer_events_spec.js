@@ -1,6 +1,5 @@
 const should = require('chai').should()
 const size = require('../actions/size.action')
-const login = require('../actions/login.action')
 const Nightmare = require('nightmare')
 const { percySnapshot } = require('@percy/nightmare')
 const { environment } = require('../environment')
