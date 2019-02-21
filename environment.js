@@ -1,5 +1,5 @@
 exports.environment ={
-    baseUrl:"http://local.ncl.com",
+    baseUrl:"https://qa2-web.ncl.com",
     widths: [300, 600, 1280],
     authPath:"/booking-quote/authUser",
     creadentials:{ username: "bgesun", password: "ncl2011" },
