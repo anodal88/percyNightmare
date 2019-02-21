@@ -5,7 +5,7 @@ const { percySnapshot } = require('@percy/nightmare')
 
 
 describe('Our Company', function () {
-  this.timeout('60s')
+  this.timeout('90s')
 
   let nightmare = null
   beforeEach(function () {
