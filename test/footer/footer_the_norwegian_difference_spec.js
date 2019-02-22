@@ -1,11 +1,11 @@
 const should = require('chai').should()
 const Nightmare = require('nightmare')
 const { percySnapshot } = require('@percy/nightmare')
-const { environment } = require('../environment')
+const { environment } = require('../environments/environment')
 
 
 
-describe('The Norwegian Differene', function () {
+describe('Footer / The Norwegian Differene', function () {
     this.timeout('120s')
 
     let nightmare = null

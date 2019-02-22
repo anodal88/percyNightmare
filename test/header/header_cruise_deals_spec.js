@@ -1,7 +1,7 @@
 const should = require('chai').should()
 const Nightmare = require('nightmare')
 const { percySnapshot } = require('@percy/nightmare')
-const { environment } = require('../environment')
+const { environment } = require('../environments/environment')
 
 
 

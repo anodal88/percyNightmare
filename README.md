@@ -1,6 +1,6 @@
 This is a proof of concept of how to integrate Percy and Nightmare Js
 
-###### STEPS TO TEST #######
+###### STEPS TO RUN TESTS #######
 
 1. Go to https://percy.io/login and login to your account  
 2. Create a new project  
@@ -11,7 +11,8 @@ This is a proof of concept of how to integrate Percy and Nightmare Js
 7. git clone https://github.com/anodal88/percy-poc.git this is a publi project folder created just to intend serve as a demo
 8. npm install 
 9. In order to upload the pictures taken during your test excecution please be sure to export the PERCY_TOKEN (STEP 3)
-10. to see how it works open one the html files inside of the folder pages and make a ui change
-11. And excecute `npm run test` to excute all the tests
-12. Go to your percy account and you should see a build with the screenshot taken
-13. To change the target of your tests go and edit `environment.js` file and edit the baseUrl attribute
+ And excecute `npm run tests` to excute all the tests
+10. Go to your percy account and you should see a build with the screenshot taken
+11. To change the target of your tests go and edit `environment.js` file and edit the baseUrl attribute
+12. To resuse some common actions you can create custom actions like `Ex. login` create a file called <action_name.action.js> belong to the `test/actions` directory
+13. If you just want to run the mocha tests without upload pictures to Percy.io execute `npm run mocha`

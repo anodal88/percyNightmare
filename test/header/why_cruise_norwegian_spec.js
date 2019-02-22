@@ -1,12 +1,10 @@
 const should = require('chai').should()
-const size = require('../actions/size.action')
 const Nightmare = require('nightmare')
 const { percySnapshot } = require('@percy/nightmare')
-const { environment } = require('../environment')
+const { environment } = require('../environments/environment')
 
 
-
-describe('Footer Events', function () {
+describe('Header / Why Cruise Norwegian', function () {
     this.timeout('60s')
 
     let nightmare = null
@@ -21,11 +19,12 @@ describe('Footer Events', function () {
         nightmare.end(done)
     })
 
-    it('Footer-events', function (done) {
+
+    it('The free style experience', function (done) {
         nightmare
 
-            .click('footer a[href*="events"]')
-            .use(percySnapshot('footer-events', { widths: environment.widths }))
+            .click('.header_navigation a[href="/why-cruise-norwegian"]')
+            .use(percySnapshot('why-cruise-norwegian', { widths: environment.widths }))
             .then(function () {
                 done()
             })
