@@ -17,7 +17,7 @@ describe('See my account', function () {
 
     beforeEach(function () {
         // Create a new Nightmare instance for each test.
-        nightmare = new Nightmare({show:true})
+        nightmare = new Nightmare()
         nightmare.goto(environment.baseUrl)
     })
 
