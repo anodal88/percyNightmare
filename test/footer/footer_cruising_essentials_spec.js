@@ -1,13 +1,11 @@
 const should = require('chai').should()
 const Nightmare = require('nightmare')
 const { percySnapshot } = require('@percy/nightmare')
-const { environment } = require('../environment')
+const { environment } = require('../environments/environment')
 
 
-
-
-describe('Special Themed Pages', function () {
-    this.timeout('90s')
+describe('Footer / Cruising Essentials', function () {
+    this.timeout('60s')
 
     let nightmare = null
     beforeEach(function () {
@@ -21,23 +19,24 @@ describe('Special Themed Pages', function () {
         nightmare.end(done)
     })
 
-    it('Casino-cruise', function (done) {
+
+    it('Accessible-cruising', function (done) {
         nightmare
 
-            .click('footer a[href*="/casino-cruise"]')
-            .use(percySnapshot('casino-cruise', { widths: environment.widths }))
+            .click('footer a[href*="/accessible-cruising"]')
+            .use(percySnapshot('accessible-cruising', { widths: environment.widths }))
             .then(function () {
                 done()
             })
             .catch(done)
     })
+  
 
-
-    it('Theme-cruises', function (done) {
+    it('Downloads-overview', function (done) {
         nightmare
 
-            .click('footer a[href*="/theme-cruises"]')
-            .use(percySnapshot('theme-cruises', { widths: environment.widths }))
+            .click('footer a[href*="/downloads/overview"]')
+            .use(percySnapshot('downloads-overview', { widths: environment.widths }))
             .then(function () {
                 done()
             })

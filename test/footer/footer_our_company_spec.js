@@ -1,10 +1,10 @@
-const { environment } = require('../environment')
+const { environment } = require('../environments/environment')
 const Nightmare = require('nightmare')
 const { percySnapshot } = require('@percy/nightmare')
 
 
 
-describe('Our Company', function () {
+describe('Footer / Our Company', function () {
   this.timeout('90s')
 
   let nightmare = null
