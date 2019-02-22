@@ -17,7 +17,7 @@ describe('See my account', function () {
 
     beforeEach(function () {
         // Create a new Nightmare instance for each test.
-        nightmare = new Nightmare()
+        nightmare = new Nightmare({show:true})
         nightmare.goto(environment.baseUrl)
     })
 
@@ -29,7 +29,7 @@ describe('See my account', function () {
 
     it('Authenticate user', (done) => {
         nightmare
-            .login() //Authenticate the user and reload the page
+            .login() 
             .then(() => {
                 return nightmare
                     .click('.header a.linkItem[href*="my-account"]')

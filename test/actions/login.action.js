@@ -24,6 +24,6 @@ Nightmare.action('login', async function (done) {
       }
     })
   await this.cookies.set(responseCookies)
-  this.goto(environment.baseUrl)
+  this.refresh()//refresh nightmare to reload the cookies
   done()
 })
